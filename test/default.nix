@@ -1,5 +1,4 @@
-{ system ? builtins.currentSystem
-, pkgs ? import nixpkgs { inherit system; }
+{ pkgs ? import nixpkgs { }
 , nixpkgs ? ../nixpkgs
 , haskell ? pkgs.callPackage ../. { }
 }:
@@ -24,6 +23,9 @@ in {
   # Run unit tests with: nix-instantiate --eval --strict -A unit
   # An empty list means success.
   unit = haskell.callPackage ./unit.nix {};
+
+  # Tells release-lib to include this in release jobset.
+  recurseForDerivations = true;
 }
 
 ## more possible test cases

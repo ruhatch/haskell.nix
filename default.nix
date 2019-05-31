@@ -130,13 +130,6 @@ let
     # regularly updated.
     inherit hackage stackage;
 
-    # Scripts for keeping Hackage and Stackage up to date.
-    maintainer-scripts = {
-      update-hackage = self.callPackage ./scripts/update-hackage.nix {};
-      update-stackage = self.callPackage ./scripts/update-stackage.nix {};
-      update-pins = self.callPackage ./scripts/update-pins.nix {};
-    };
-
     # Make this handy overridable fetch function available.
     inherit fetchExternal;
 
